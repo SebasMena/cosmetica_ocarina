@@ -16,6 +16,8 @@ raw_locale <- "data/raw/"
 receta <- read_excel(paste0(raw_locale, "Balsamos.xlsx"), sheet = "receta")
 precios <- read_excel(paste0(raw_locale, "Cuentas.xlsx"), sheet = "Materiales")
 
+# ajustes de formato
+# definir fecha
 
 # acoplando formato
 

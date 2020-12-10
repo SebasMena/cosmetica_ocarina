@@ -1,0 +1,43 @@
+---
+title: "Materias primas"
+author: "Andrea Arriaga-Madrigal"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+Objetivo del código: Actualizar las materias primas disponibles de acuerdo con el gasto que se genera en el documento de bitácora
+
+
+
+```{r setup, include=FALSE}
+rm(list = ls())
+
+# setup
+library(readxl)
+library(magrittr)
+
+# setwd("/home/andrea/Documentos/cosmetica_ocarina") # Andre
+# setwd("Documentos/cosmetica_ocarina") # Sebas
+# .libPaths("D:/Rlib") # Sebas
+
+
+```
+
+```{r}
+# llamando los datos
+raw_locale <- "data/raw/"
+articulos <- read_excel(paste0(raw_locale, "Materias_primas.xlsx"), sheet = "articulos")
+bitacora <- read_excel(paste0(raw_locale, "Bitacora.xlsx"))
+recetas <- read_excel(paste0(raw_locale, "Recetas.xlsx"))
+
+# definiendo la clase correcta para las columnas
+bitacora$fecha %<>% as.Date()
+
+
+# generando lista de precios de los ingredientes usados
+precios_receta <- precios[precios$articulo %in% receta$articulo, ]
+
+
+```
+
